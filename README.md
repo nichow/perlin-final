@@ -9,7 +9,7 @@ Ezra, Nic, Tati, Wills
 
 Wills: wxf201@nyu.edu +1-650-621-0227
 
-Tati: tt998@access.cims.nyu.edu 917 843 7819
+Tati: tt998@nyu.edu 917 843 7819
 
 Ezra: ezra@ezramiller.biz 312-607-1337
 
