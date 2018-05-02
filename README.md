@@ -13,3 +13,5 @@ Tati: tt998@access.cims.nyu.edu 917 843 7819
 
 Ezra: ezra@ezramiller.biz 312-607-1337
 
+Nic: nicolas.garcia@nyu.edu 917-597-1096
+
