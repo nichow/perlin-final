@@ -17,7 +17,7 @@ Nic: nicolas.garcia@nyu.edu 917-597-1096
 
 ## Description
 
-For our final project we're planning to create a space-shooter style game using Unity, with SuperCollider for audio. The game is inspired by Treasure Planet & Spacewar. The game starts out with a kid in a bedroom dreaming of being a space-fighter, and then he opens a door into space and begins fighting
+For our final project we're planning to create a space-shooter style game using Unity, with SuperCollider for audio. The game is inspired by Treasure Planet & Spacewar. The game starts out with a kid in a bedroom dreaming of being a space-fighter, and then he opens a door into space and begins fighting against enemies, which include asteroids and gravity-wells that distort space.
 
 ## To-Do
 
