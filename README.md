@@ -23,11 +23,11 @@ For our final project we're planning to create a space-shooter style game using 
 
 For Sunday
 
--Model assets and scenes (Ezra)
-	-Asteroid and gravity-well objects (procedural)
-	-Character modeling & animation (stock 3D model)
--Game Interaction (Nic and Wills)
-	-Third person cutscene to first person game
-	-Physics
-	-Spaceship controls and enemies
--Sound integration with SuperCollider (Tati)
+- Model assets and scenes (Ezra)
+	- Asteroid and gravity-well objects (procedural)
+	- Character modeling & animation (stock 3D model)
+- Game Interaction (Nic and Wills)
+	- Third person cutscene to first person game
+	- Physics
+	- Spaceship controls and enemies
+- Sound integration with SuperCollider (Tati)
