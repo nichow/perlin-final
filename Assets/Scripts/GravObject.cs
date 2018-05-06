@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class GravObject : MonoBehaviour
 {
-    const float G = 667.4f;
+    const float G = 10f;
 
     public static List<GravObject> gravObjects;
 
