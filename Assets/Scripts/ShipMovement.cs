@@ -43,7 +43,9 @@ public class ShipMovement : MonoBehaviour
     // FixedUpdate is called once per fixed frame
     void FixedUpdate ()
 	{
-		if (Input.GetButton("Thrust"))
+	    var hdirection = Input.GetAxis("Horizontal"); // negative if left, positive if right
+	    var vdirection = Input.GetAxis("Vertical");   // negative if down, positive if up
+        if (Input.GetButton("Thrust"))
 	    {
             rb.AddForce(transform.forward * _thrust * Time.fixedDeltaTime); //Accelerate
 	    }
