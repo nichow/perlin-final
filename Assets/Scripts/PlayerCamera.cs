@@ -18,31 +18,8 @@ public class PlayerCamera : MonoBehaviour
     // LateUpdate is called once per frame, after any Update calls
     void LateUpdate()
     {
-        var hdirection = Input.GetAxis("Horizontal"); // negative if left, positive if right
-        var vdirection = Input.GetAxis("Vertical");   // negative if down, positive if up
-
-        if (hdirection < 0)
-        {
-            transform.Rotate(-20 * Vector3.forward * Time.deltaTime, Space.World);
-        }
-        else if (hdirection > 0)
-        {
-            transform.Rotate(20 * Vector3.forward * Time.deltaTime, Space.World);
-        }
-
-//        if (vdirection > 0)
-//        {
-//            transform.Rotate(-20 * Vector3.left * Time.deltaTime, Space.World);
-//            transform.Translate(5 * Vector3.up);
-//        }
-//        else if (vdirection < 0)
-//        {
-//            transform.Rotate(20 * Vector3.left * Time.deltaTime, Space.World);
-//            transform.Translate(5 * Vector3.down);
-//        }
-
         //the camera's position is a set distance away from the player, modified by the z value of their velocity
-        transform.position = (Player.transform.position + _offset) 
+        transform.position = new Vector3(transform.position.x, transform.position.y, Player.transform.position.z + _offset.z) 
                              + new Vector3(0, 0, -.25f * Mathf.Clamp(Player.GetComponent<Rigidbody>().velocity.z, -.5f, .5f));
     }
 }
