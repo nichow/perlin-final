@@ -6,26 +6,29 @@ using UnityEngine;
  * Modified from: https://github.com/Brackeys/Gravity-Simulation-Tutorial/blob/master/Planet%20Gravity/Assets/Attractor.cs
  * Licence attached to that makes it public domain
  */
-
+[RequireComponent(typeof(Rigidbody))]
 public class GravObject : MonoBehaviour
 {
     const float G = 10f;
 
-    public static List<GravObject> gravObjects;
+    public float forceEffectRatio = 1.0f;
 
-    public Rigidbody rb;
-	
-	// Update is called once per given tick
-	void FixedUpdate ()
+    public static List<GravObject> gravObjects;
+    private Rigidbody rb;
+    void Start(){
+        rb = GetComponent<Rigidbody>();
+    }    
+    // Update is called once per given tick
+    void FixedUpdate ()
     {
-		foreach (GravObject g in gravObjects)
+        foreach (GravObject g in gravObjects)
         {
             if(g != this)
             {
                 ApplyForce(g);
             }
         }
-	}
+    }
 
     void OnEnable()
     {
@@ -47,7 +50,7 @@ public class GravObject : MonoBehaviour
         float r = dir.magnitude;
         if (r == 0f) return;
 
-        float mag = (G * rb.mass * rbo.mass) / (r * r);
+        float mag = ((G * rb.mass * rbo.mass) / (r * r)) * forceEffectRatio;
 
         Vector3 force = dir.normalized * mag;
 

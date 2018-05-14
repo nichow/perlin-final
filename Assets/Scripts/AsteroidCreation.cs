@@ -9,8 +9,19 @@ public class AsteroidCreation : MonoBehaviour
 
     public float startTime = 0.5f;
     public float spawnTick = 10.0f;
+    public Rigidbody asteroid;
+    public float minRadus;
+    public float spawningRadius;
+    public int limit;
+
     void Start()
     {
+        minRadus = 1;
+        spawningRadius = 10;
+        limit = 3;
+        count = 0;
+        massRange = 20;
+        massMin = 1;
         InvokeRepeating("CreateAsteroid", startTime, spawnTick);
     }
 
@@ -20,13 +31,15 @@ public class AsteroidCreation : MonoBehaviour
         removeFarAsteroids(Camera.main.gameObject.transform.position);
     }
 
-    public Rigidbody asteroid;
-    public float minRadus = 500;
-    public float spawningRadius = 1000;
-    public float massRange = 20;
-    public float massMin = 1;
+
+    public static int count;
+
+    public float massRange;
+    public float massMin;
     void CreateAsteroid(Vector3 centerSpawningPoint)
     {
+        if (count >= limit) return;
+        count++;
         if(asteroids == null)
         {
             asteroids = new List<Rigidbody>();
@@ -64,9 +77,17 @@ public class AsteroidCreation : MonoBehaviour
             if((r.position - location).magnitude > spawningRadius)
             {
                 asteroids.Remove(r);
+                count--;
                 Destroy(r, 1);
             }
         }
+    }
+
+    void destoryAsteroid(Rigidbody a)
+    {
+        asteroids.Remove(a);
+        count--;
+        Destroy(a);
     }
 }
 
