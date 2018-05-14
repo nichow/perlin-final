@@ -23,22 +23,22 @@ public class PlayerCamera : MonoBehaviour
 
         if (hdirection < 0)
         {
-            transform.Rotate(-20 * Vector3.up * Time.deltaTime, Space.World);
-            transform.Translate(7 * Vector3.left);
+            transform.Rotate(-20 * Vector3.forward * Time.deltaTime, Space.World);
         }
         else if (hdirection > 0)
         {
-            transform.Rotate(20 * Vector3.up * Time.deltaTime, Space.World);
-            transform.Translate(7 * Vector3.right);
+            transform.Rotate(20 * Vector3.forward * Time.deltaTime, Space.World);
         }
 
 //        if (vdirection > 0)
 //        {
-//            transform.Rotate(Vector3.left);
+//            transform.Rotate(-20 * Vector3.left * Time.deltaTime, Space.World);
+//            transform.Translate(5 * Vector3.up);
 //        }
 //        else if (vdirection < 0)
 //        {
-//            transform.Rotate(-1 * Vector3.left);
+//            transform.Rotate(20 * Vector3.left * Time.deltaTime, Space.World);
+//            transform.Translate(5 * Vector3.down);
 //        }
 
         //the camera's position is a set distance away from the player, modified by the z value of their velocity

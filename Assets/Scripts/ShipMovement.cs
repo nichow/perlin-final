@@ -6,8 +6,6 @@ public class ShipMovement : MonoBehaviour
 {
     private float _thrust;
     public Rigidbody rb;
-    private float _startTime;
-    private float _spd = 5f;
 
     // Use this for initialization
     void Start ()
@@ -23,11 +21,11 @@ public class ShipMovement : MonoBehaviour
 
         if (hdirection < 0)
         {
-            transform.Rotate(-1 * Vector3.up);
+            transform.Rotate(-1 * Vector3.forward);
         }
         else if (hdirection > 0)
         {
-            transform.Rotate(Vector3.up);
+            transform.Rotate(Vector3.forward);
         }
 
         if (vdirection > 0)
@@ -53,5 +51,9 @@ public class ShipMovement : MonoBehaviour
 		{
 		    rb.AddForce(-1 * transform.forward * _thrust * Time.fixedDeltaTime); //Decelerate
 		}
+        else if (rb.velocity.z > 0)
+        {
+            rb.AddForce(-1 * transform.forward * (_thrust / 4) * Time.fixedDeltaTime);
+        }
 	}
 }
