@@ -12678,7 +12678,7 @@ GameObject:
   - component: {fileID: 1191881043}
   - component: {fileID: 1191881042}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AsteroidSpawnerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12695,10 +12695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d5f62dd0ce44540bbf7e55a468c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnTick: 500
+  startTime: 0.5
+  spawnTick: 10
   asteroid: {fileID: 54569478033841334, guid: ea54629614508f644ab3c932165a7f18, type: 2}
-  minRadus: 10
-  spawningRadius: 100
+  minRadus: 500
+  spawningRadius: 1000
 --- !u!4 &1191881043
 Transform:
   m_ObjectHideFlags: 0

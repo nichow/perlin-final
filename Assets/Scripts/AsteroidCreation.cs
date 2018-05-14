@@ -5,28 +5,19 @@ using UnityEngine;
 public class AsteroidCreation : MonoBehaviour
 {
     public static List<Rigidbody> asteroids; //list of asteroids
-    // Update is called once per frame
-    
-    void Update()
+                                             // Update is called once per frame
+
+    public float startTime = 0.5f;
+    public float spawnTick = 10.0f;
+    void Start()
     {
-        
+        InvokeRepeating("CreateAsteroid", startTime, spawnTick);
     }
 
-    public int spawnOnTick = 500;
-    int tick = 0;
 
     void FixedUpdate()
     {
         removeFarAsteroids(Camera.main.gameObject.transform.position);
-        if (tick % spawnOnTick == 0)
-        {
-            CreateAsteroid(Camera.main.gameObject.transform.position);
-            tick = 0;
-        }
-        else
-        {
-            tick++;
-        }
     }
 
     public Rigidbody asteroid;
@@ -55,6 +46,11 @@ public class AsteroidCreation : MonoBehaviour
         Rigidbody asteroidClone = (Rigidbody)Instantiate(asteroid, (Random.insideUnitSphere * spawningRadius) + centerSpawningPoint, Random.rotation);
         asteroidClone.GetComponent<GravObject>().enabled = true;
         asteroids.Add(asteroidClone);
+    }
+
+    void CreateAsteroid()
+    {
+        CreateAsteroid(Camera.main.transform.position);
     }
 
     void removeFarAsteroids(Vector3 location)
