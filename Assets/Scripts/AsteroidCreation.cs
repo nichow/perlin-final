@@ -23,6 +23,8 @@ public class AsteroidCreation : MonoBehaviour
     public Rigidbody asteroid;
     public float minRadus = 500;
     public float spawningRadius = 1000;
+    public float massRange = 20;
+    public float massMin = 1;
     void CreateAsteroid(Vector3 centerSpawningPoint)
     {
         if(asteroids == null)
@@ -45,6 +47,7 @@ public class AsteroidCreation : MonoBehaviour
         spawnPos += centerSpawningPoint;
         Rigidbody asteroidClone = (Rigidbody)Instantiate(asteroid, (Random.insideUnitSphere * spawningRadius) + centerSpawningPoint, Random.rotation);
         asteroidClone.GetComponent<GravObject>().enabled = true;
+        asteroidClone.mass = (Random.value * massRange) + massMin;
         asteroids.Add(asteroidClone);
     }
 
