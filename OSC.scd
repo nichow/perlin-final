@@ -26,7 +26,7 @@ OSCdef.new(
 		~scale = [53,55,48].midicps*2;
 		~random = {rrand(400,1000).postln;};
 		Synth(\sound,[\f,~random]);
-	},
+	},w
 	'/particle',
 	nil,
 	57120

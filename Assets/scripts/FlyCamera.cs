@@ -19,6 +19,8 @@ public class FlyCamera : MonoBehaviour {
 	public float camSens = 0.25f; //How sensitive it with mouse
 	public bool rotateOnlyIfMousedown = true;
 	public bool movementStaysFlat = true;
+    private float z = 0;
+    private float x = 0;
 
 	private Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
 	private float totalRun= 1.0f;
@@ -28,8 +30,8 @@ public class FlyCamera : MonoBehaviour {
 		// nop:
 		//transform.position.Set(0,8,-32);
 		//transform.rotation.Set(15,0,0,1);
-		transform.position = new Vector3(0,8,-32);
-		transform.rotation = Quaternion.Euler(25,0,0);
+	//	transform.position = new Vector3(0,8,0);
+		//transform.rotation = Quaternion.Euler(25,0,0);
 	}
 
 
@@ -47,6 +49,9 @@ public class FlyCamera : MonoBehaviour {
 			lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
 			lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x , transform.eulerAngles.y + lastMouse.y, 0);
 			transform.eulerAngles = lastMouse;
+            //Debug.Log("transform.eulerAngles" + transform.eulerAngles);
+/*Supercollider OSC send message*/ 
+            //OSCHandler.Instance.SendMessageToClient("SuperCollider", "/pan", transform.eulerAngles.y);
 			lastMouse =  Input.mousePosition;
 			//Mouse  camera angle done.  
 		}
@@ -85,20 +90,29 @@ public class FlyCamera : MonoBehaviour {
 		Vector3 p_Velocity = new Vector3();
         float forward = 1f;
 		if (Input.GetKey (KeyCode.W)){
+            
 			p_Velocity += new Vector3(0, 0 , 1f);
-            float z = transform.position.z;
-            Debug.Log(z);
-            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/z", z);
+
+/*SUPERCOLLIDER SEND OSC MESSAGE->move forward in z axis*/
+            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/z", transform.position.z);
         }
 		if (Input.GetKey (KeyCode.S)){
-			p_Velocity += new Vector3(0, 0, -1f);
+			p_Velocity += new Vector3(0, 0, -1f);    
+/*SUPERCOLLIDER SEND OSC MESSAGE->move backward in z axis*/
+            OSCHandler.Instance.SendMessageToClient("SuperCollider","/z",transform.position.z);
 		}
 		if (Input.GetKey (KeyCode.A)){
 			p_Velocity += new Vector3(-1f, 0, 0);
-		}
-		if (Input.GetKey (KeyCode.D)){
+/*SUPERCOLLIDER SEND OSC MESSAGE->move left, x axis*/
+            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/x", transform.position.x);
+        }
+        if (Input.GetKey (KeyCode.D)){
 			p_Velocity += new Vector3(1f, 0, 0);
-		}
-		return p_Velocity;
+
+            x = p_Velocity.z;
+ /*SUPERCOLLIDER SEND OSC MESSAGE->move right, x axis*/
+            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/x", transform.position.x);
+        }
+        return p_Velocity;
 	}
 }
