@@ -13,8 +13,8 @@ public class FlyCamera : MonoBehaviour {
     space : Moves camera on X and Z axis only.  So camera doesn't gain any height*/
 	
 	
-	public float mainSpeed = 100.0f; //regular speed
-	public float shiftAdd = 250.0f; //multiplied by how long shift is held.  Basically running
+	public float mainSpeed = 50f; //regular speed
+	public float shiftAdd = 125f; //multiplied by how long shift is held.  Basically running
 	public float maxShift = 1000.0f; //Maximum speed when holdin gshift
 	public float camSens = 0.25f; //How sensitive it with mouse
 	public bool rotateOnlyIfMousedown = true;
@@ -87,8 +87,8 @@ public class FlyCamera : MonoBehaviour {
 		if (Input.GetKey (KeyCode.W)){
 			p_Velocity += new Vector3(0, 0 , 1f);
             float z = transform.position.z;
-            Debug.Log(z);
-            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/z", z);
+//            Debug.Log(z);
+//            OSCHandler.Instance.SendMessageToClient("SuperCollider", "/z", z);
         }
 		if (Input.GetKey (KeyCode.S)){
 			p_Velocity += new Vector3(0, 0, -1f);

@@ -20,8 +20,10 @@ public class ShipShoot : MonoBehaviour {
         layerMask = ~layerMask;
 		if (Input.GetButtonDown("Fire"))
 		{
-		    RaycastHit hit;
-		    if (Physics.Raycast(transform.position, Vector3.forward, out hit, 15f, layerMask))
+		    var forward = transform.TransformDirection(Vector3.forward) * 15;
+		    Debug.DrawRay(transform.position, forward, Color.green, 15, true);
+            RaycastHit hit;
+		    if (Physics.Raycast(transform.position, forward, out hit, 15f, layerMask))
 		    {
 		        if (hit.collider.gameObject.tag == "Asteroid")
 		        {
